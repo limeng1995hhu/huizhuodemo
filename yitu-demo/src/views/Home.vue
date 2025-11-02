@@ -1,19 +1,20 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 
 const banners = ref([
   {
     id: 1,
-    image: 'https://via.placeholder.com/800x300/2c5f2d/ffffff?text=万州围棋村超',
+    image: logoImg,
     title: '万州围棋村超',
     subtitle: '传承围棋文化，共建围棋之乡'
   },
   {
     id: 2,
-    image: 'https://via.placeholder.com/800x300/ff8c00/ffffff?text=围棋赛事报名',
+    image: logoImg,
     title: '围棋赛事报名',
     subtitle: '精彩赛事，等你来战'
   }
@@ -77,19 +78,19 @@ const news = ref([
     id: 1,
     title: '2024年万州围棋村超春季赛圆满落幕',
     date: '2024-03-15',
-    image: 'https://via.placeholder.com/300x200/2c5f2d/ffffff?text=赛事新闻'
+    image: logoImg
   },
   {
     id: 2,
     title: '围棋文化进校园活动成功举办',
     date: '2024-03-10',
-    image: 'https://via.placeholder.com/300x200/4a90e2/ffffff?text=文化活动'
+    image: logoImg
   },
   {
     id: 3,
     title: '围棋大师线上讲座预告',
     date: '2024-03-08',
-    image: 'https://via.placeholder.com/300x200/ff8c00/ffffff?text=讲座预告'
+    image: logoImg
   }
 ])
 

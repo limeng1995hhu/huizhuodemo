@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 
@@ -8,7 +9,7 @@ const orders = ref([
   {
     id: 'ORD20240315001',
     productName: '云子围棋套装',
-    productImage: 'https://via.placeholder.com/100x100/2c5f2d/ffffff?text=套装',
+    productImage: logoImg,
     price: 299,
     paymentMethod: '微信支付',
     status: 'shipped',
@@ -19,7 +20,7 @@ const orders = ref([
   {
     id: 'ORD20240310002',
     productName: '围棋文化T恤',
-    productImage: 'https://via.placeholder.com/100x100/4a90e2/ffffff?text=T恤',
+    productImage: logoImg,
     price: 0,
     coins: 890,
     paymentMethod: '虚拟币兑换',
@@ -30,7 +31,7 @@ const orders = ref([
   {
     id: 'ORD20240308003',
     productName: '围棋定式手册',
-    productImage: 'https://via.placeholder.com/100x100/9c27b0/ffffff?text=手册',
+    productImage: logoImg,
     price: 45,
     paymentMethod: '微信支付',
     status: 'pending',

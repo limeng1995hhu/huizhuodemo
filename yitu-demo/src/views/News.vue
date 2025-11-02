@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 
@@ -19,7 +20,7 @@ const newsList = ref([
     type: 'event',
     title: '2024年万州围棋村超春季赛圆满落幕',
     summary: '经过三天的激烈角逐，2024年万州围棋村超春季赛于4月17日圆满落幕...',
-    image: 'https://via.placeholder.com/400x250/2c5f2d/ffffff?text=赛事新闻',
+    image: logoImg,
     date: '2024-03-15',
     views: 1580
   },
@@ -28,7 +29,7 @@ const newsList = ref([
     type: 'culture',
     title: '围棋文化进校园活动成功举办',
     summary: '为推广围棋文化，提升青少年围棋水平，万州区围棋协会联合教育局...',
-    image: 'https://via.placeholder.com/400x250/4a90e2/ffffff?text=文化活动',
+    image: logoImg,
     date: '2024-03-10',
     views: 980
   },
@@ -37,7 +38,7 @@ const newsList = ref([
     type: 'event',
     title: '围棋大师线上讲座预告',
     summary: '应广大棋友要求，我们特邀职业九段棋手进行线上讲座...',
-    image: 'https://via.placeholder.com/400x250/ff8c00/ffffff?text=讲座预告',
+    image: logoImg,
     date: '2024-03-08',
     views: 2350
   },
@@ -46,7 +47,7 @@ const newsList = ref([
     type: 'policy',
     title: '关于推进围棋文化发展的实施意见',
     summary: '为深入贯彻落实国家体育总局关于围棋发展的指导意见...',
-    image: 'https://via.placeholder.com/400x250/9c27b0/ffffff?text=政策文件',
+    image: logoImg,
     date: '2024-03-05',
     views: 1120
   },
@@ -55,7 +56,7 @@ const newsList = ref([
     type: 'culture',
     title: '围棋文化研学活动报名开启',
     summary: '万州围棋文化研学基地现已开放预约，提供围棋文化体验、亲子围棋活动...',
-    image: 'https://via.placeholder.com/400x250/f44336/ffffff?text=研学活动',
+    image: logoImg,
     date: '2024-03-01',
     views: 1680
   }

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 
@@ -20,7 +21,7 @@ const products = ref([
     category: 'equipment',
     price: 299,
     coins: 2990,
-    image: 'https://via.placeholder.com/300x300/2c5f2d/ffffff?text=围棋套装',
+    image: logoImg,
     sales: 156,
     stock: 50
   },
@@ -30,7 +31,7 @@ const products = ref([
     category: 'cultural',
     price: 89,
     coins: 890,
-    image: 'https://via.placeholder.com/300x300/4a90e2/ffffff?text=文化T恤',
+    image: logoImg,
     sales: 328,
     stock: 100
   },
@@ -40,7 +41,7 @@ const products = ref([
     category: 'materials',
     price: 45,
     coins: 450,
-    image: 'https://via.placeholder.com/300x300/9c27b0/ffffff?text=定式手册',
+    image: logoImg,
     sales: 89,
     stock: 200
   },
@@ -50,7 +51,7 @@ const products = ref([
     category: 'equipment',
     price: 599,
     coins: 5990,
-    image: 'https://via.placeholder.com/300x300/ff8c00/ffffff?text=实木棋盘',
+    image: logoImg,
     sales: 45,
     stock: 20
   },
@@ -60,7 +61,7 @@ const products = ref([
     category: 'cultural',
     price: 39,
     coins: 390,
-    image: 'https://via.placeholder.com/300x300/f44336/ffffff?text=帆布袋',
+    image: logoImg,
     sales: 267,
     stock: 150
   },
@@ -70,7 +71,7 @@ const products = ref([
     category: 'materials',
     price: 68,
     coins: 680,
-    image: 'https://via.placeholder.com/300x300/00bcd4/ffffff?text=习题集',
+    image: logoImg,
     sales: 134,
     stock: 80
   }

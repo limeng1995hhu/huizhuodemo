@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -10,7 +11,7 @@ const news = ref({
   title: '2024年万州围棋村超春季赛圆满落幕',
   date: '2024-03-15',
   views: 1580,
-  image: 'https://via.placeholder.com/800x400/2c5f2d/ffffff?text=赛事新闻',
+  image: logoImg,
   content: `
     <p>经过三天的激烈角逐，2024年万州围棋村超春季赛于4月17日在万州区围棋文化中心圆满落幕。本次比赛吸引了来自全国各地的200余名围棋爱好者参赛，是万州区举办的规模最大的围棋赛事之一。</p>
     

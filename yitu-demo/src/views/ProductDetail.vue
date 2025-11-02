@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 
@@ -9,7 +10,7 @@ const product = ref({
   name: '云子围棋套装',
   price: 299,
   coins: 2990,
-  image: 'https://via.placeholder.com/600x600/2c5f2d/ffffff?text=围棋套装',
+  image: logoImg,
   sales: 156,
   stock: 50,
   description: '精选云南云子，质地细腻，手感舒适。配套实木棋盘，适合家庭使用和学习练习。',

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -19,7 +20,7 @@ const event = ref({
   participants: 128,
   maxParticipants: 200,
   fee: 50,
-  image: 'https://via.placeholder.com/800x400/2c5f2d/ffffff?text=春季赛',
+  image: logoImg,
   description: '万州围棋村超春季赛是一年一度的围棋盛事，旨在推广围棋文化，提升棋手水平。本次比赛采用积分循环赛制，欢迎各级别棋手报名参加。',
   rules: [
     '比赛采用中国围棋规则',

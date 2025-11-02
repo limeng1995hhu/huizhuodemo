@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 
@@ -17,7 +18,7 @@ const events = ref([
     participants: 128,
     maxParticipants: 200,
     fee: 50,
-    image: 'https://via.placeholder.com/400x250/2c5f2d/ffffff?text=春季赛',
+    image: logoImg,
     tags: ['线下赛', '积分赛']
   },
   {
@@ -30,7 +31,7 @@ const events = ref([
     participants: 45,
     maxParticipants: 64,
     fee: 0,
-    image: 'https://via.placeholder.com/400x250/4a90e2/ffffff?text=青少年赛',
+    image: logoImg,
     tags: ['线下赛', '青少年']
   },
   {
@@ -43,7 +44,7 @@ const events = ref([
     participants: 256,
     maxParticipants: 500,
     fee: 0,
-    image: 'https://via.placeholder.com/400x250/ff8c00/ffffff?text=线上月赛',
+    image: logoImg,
     tags: ['线上赛', '免费']
   },
   {
@@ -56,7 +57,7 @@ const events = ref([
     participants: 0,
     maxParticipants: 200,
     fee: 50,
-    image: 'https://via.placeholder.com/400x250/9c27b0/ffffff?text=夏季赛',
+    image: logoImg,
     tags: ['线下赛', '积分赛']
   },
   {
@@ -69,7 +70,7 @@ const events = ref([
     participants: 180,
     maxParticipants: 200,
     fee: 50,
-    image: 'https://via.placeholder.com/400x250/607d8b/ffffff?text=冬季赛',
+    image: logoImg,
     tags: ['线下赛', '已结束']
   }
 ])

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 
@@ -22,7 +23,7 @@ const videos = ref([
     category: 'beginner',
     duration: '15:30',
     views: 12580,
-    thumbnail: 'https://via.placeholder.com/300x180/2c5f2d/ffffff?text=入门课程',
+    thumbnail: logoImg,
     author: '李老师'
   },
   {
@@ -31,7 +32,7 @@ const videos = ref([
     category: 'basic',
     duration: '22:15',
     views: 8960,
-    thumbnail: 'https://via.placeholder.com/300x180/4a90e2/ffffff?text=死活题',
+    thumbnail: logoImg,
     author: '王老师'
   },
   {
@@ -40,7 +41,7 @@ const videos = ref([
     category: 'intermediate',
     duration: '28:45',
     views: 6420,
-    thumbnail: 'https://via.placeholder.com/300x180/9c27b0/ffffff?text=定式',
+    thumbnail: logoImg,
     author: '张老师'
   },
   {
@@ -49,7 +50,7 @@ const videos = ref([
     category: 'advanced',
     duration: '45:20',
     views: 15230,
-    thumbnail: 'https://via.placeholder.com/300x180/f44336/ffffff?text=对局解析',
+    thumbnail: logoImg,
     author: '陈老师'
   },
   {
@@ -58,7 +59,7 @@ const videos = ref([
     category: 'special',
     duration: '35:10',
     views: 5680,
-    thumbnail: 'https://via.placeholder.com/300x180/ff9800/ffffff?text=文化讲座',
+    thumbnail: logoImg,
     author: '刘老师'
   }
 ])
