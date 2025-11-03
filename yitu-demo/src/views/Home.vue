@@ -99,6 +99,15 @@ const news = ref([
   }
 ])
 
+const partners = ref([
+  { id: 1, name: '合作伙伴1', logo: logoImg },
+  { id: 2, name: '合作伙伴2', logo: logoImg },
+  { id: 3, name: '合作伙伴3', logo: logoImg },
+  { id: 4, name: '合作伙伴4', logo: logoImg },
+  { id: 5, name: '合作伙伴5', logo: logoImg },
+  { id: 6, name: '合作伙伴6', logo: logoImg }
+])
+
 const goToFeature = (path) => {
   router.push(path)
 }
@@ -188,6 +197,45 @@ setInterval(() => {
           </div>
         </div>
       </el-card>
+    </div>
+
+    <!-- 赞助商广告位 -->
+    <div class="sponsor-section">
+      <div class="section-header">
+        <div class="header-line"></div>
+        <h3 class="section-title">赞助商</h3>
+      </div>
+      <el-card class="sponsor-card" shadow="hover">
+        <el-image
+          :src="logoImg"
+          alt="赞助商"
+          class="sponsor-image"
+          fit="cover"
+        />
+        <div class="ad-badge">广告</div>
+      </el-card>
+    </div>
+
+    <!-- 合作伙伴 -->
+    <div class="partner-section">
+      <div class="section-header">
+        <div class="header-line"></div>
+        <h3 class="section-title">合作伙伴</h3>
+      </div>
+      <div class="partner-grid">
+        <div
+          v-for="partner in partners"
+          :key="partner.id"
+          class="partner-item"
+        >
+          <el-image
+            :src="partner.logo"
+            :alt="partner.name"
+            class="partner-logo"
+            fit="contain"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -394,6 +442,98 @@ setInterval(() => {
   color: #999;
 }
 
+/* 赞助商广告位 */
+.sponsor-section {
+  padding: 0 16px 20px;
+  background: #f5f5f5;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.header-line {
+  width: 4px;
+  height: 18px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.sponsor-card {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sponsor-card:active {
+  transform: scale(0.98);
+}
+
+:deep(.sponsor-card .el-card__body) {
+  padding: 0;
+}
+
+.sponsor-image {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+}
+
+.ad-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* 合作伙伴 */
+.partner-section {
+  padding: 0 16px 20px;
+  background: #f5f5f5;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.partner-item {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.partner-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.partner-logo {
+  width: 100%;
+  height: 60px;
+}
+
 @media (max-width: 768px) {
   .banner-section {
     margin: 0 12px 16px;
@@ -430,6 +570,22 @@ setInterval(() => {
 
   .news-date {
     font-size: 11px;
+  }
+
+  .section-title {
+    font-size: 16px;
+  }
+
+  .sponsor-image {
+    height: 150px;
+  }
+
+  .partner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .partner-logo {
+    height: 50px;
   }
 }
 </style>
