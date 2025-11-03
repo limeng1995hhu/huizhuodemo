@@ -6,6 +6,7 @@ import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
 const searchText = ref('')
+const currentBanner = ref(0)
 
 const banners = ref([
   {
@@ -22,7 +23,10 @@ const banners = ref([
   }
 ])
 
-const currentBanner = ref(0)
+// 自动更新当前轮播索引
+setInterval(() => {
+  currentBanner.value = (currentBanner.value + 1) % banners.value.length
+}, 5000)
 
 const features = [
   {
@@ -124,7 +128,7 @@ setInterval(() => {
 
     <!-- 轮播图 -->
     <div class="banner-section">
-      <el-carousel height="200px" :interval="5000" arrow="never">
+      <el-carousel height="200px" :interval="5000" arrow="never" indicator-position="none">
         <el-carousel-item v-for="banner in banners" :key="banner.id">
           <img :src="banner.image" :alt="banner.title" class="banner-image" />
           <div class="banner-content">
@@ -132,6 +136,15 @@ setInterval(() => {
           </div>
         </el-carousel-item>
       </el-carousel>
+      <div class="custom-indicators">
+        <span
+          v-for="(banner, index) in banners"
+          :key="banner.id"
+          class="indicator-dot"
+          :class="{ active: index === currentBanner }"
+          @click="currentBanner = index"
+        ></span>
+      </div>
     </div>
 
     <!-- 主功能卡片 -->
@@ -218,6 +231,7 @@ setInterval(() => {
   margin: 0 16px 20px;
   border-radius: 12px;
   overflow: hidden;
+  position: relative;
 }
 
 :deep(.el-carousel) {
@@ -251,12 +265,34 @@ setInterval(() => {
                0 2px 4px rgba(255, 255, 255, 0.8);
 }
 
-:deep(.el-carousel__indicator) {
-  background-color: rgba(255, 255, 255, 0.5);
+/* 自定义圆点指示器 */
+.custom-indicators {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
 }
 
-:deep(.el-carousel__indicator.is-active) {
+.indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.indicator-dot.active {
   background-color: var(--primary-color);
+  width: 24px;
+  border-radius: 4px;
 }
 
 /* 主功能卡片 */
