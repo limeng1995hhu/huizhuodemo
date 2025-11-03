@@ -1,11 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { Search, Trophy, Reading, Clock } from '@element-plus/icons-vue'
+import { Trophy, Reading, Clock } from '@element-plus/icons-vue'
 import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
-const searchText = ref('')
 const currentBanner = ref(0)
 
 const banners = ref([
@@ -115,17 +114,6 @@ setInterval(() => {
 
 <template>
   <div class="home">
-    <!-- 搜索框 -->
-    <div class="search-section">
-      <el-input
-        v-model="searchText"
-        placeholder="搜索围棋资源"
-        :prefix-icon="Search"
-        size="large"
-        class="search-input"
-      />
-    </div>
-
     <!-- 轮播图 -->
     <div class="banner-section">
       <el-carousel height="200px" :interval="5000" arrow="never" indicator-position="none">
@@ -211,24 +199,9 @@ setInterval(() => {
   min-height: 100vh;
 }
 
-/* 搜索框 */
-.search-section {
-  padding: 16px;
-  background: #ffffff;
-}
-
-.search-input {
-  border-radius: 24px;
-}
-
-:deep(.el-input__wrapper) {
-  border-radius: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
 /* 轮播图 */
 .banner-section {
-  margin: 0 16px 20px;
+  margin: 16px 16px 20px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
