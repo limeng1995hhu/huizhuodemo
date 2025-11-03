@@ -15,7 +15,7 @@ const showBottomNav = computed(() => {
 const navItems = [
   { name: '首页', path: '/', icon: '🏠' },
   { name: '赛事', path: '/events', icon: '🏆' },
-  { name: '学习', path: '/learning', icon: '📚' },
+  { name: '发现', path: '/news', icon: '📰' },
   { name: '商城', path: '/shop', icon: '🛒' },
   { name: '我的', path: '/profile', icon: '👤' }
 ]

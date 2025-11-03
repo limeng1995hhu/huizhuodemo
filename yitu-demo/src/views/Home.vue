@@ -136,46 +136,39 @@ setInterval(() => {
       </div>
     </div>
 
-    <!-- 功能入口 -->
-    <div class="features-section">
-      <div class="container">
-        <h3 class="section-title">功能导航</h3>
-        <div class="features-grid">
-          <div
-            v-for="feature in features"
-            :key="feature.id"
-            class="feature-card"
-            @click="goToFeature(feature.path)"
-          >
-            <div class="feature-icon" :style="{ backgroundColor: feature.color }">
-              {{ feature.icon }}
-            </div>
-            <div class="feature-title">{{ feature.title }}</div>
-            <div class="feature-desc">{{ feature.description }}</div>
+    <!-- 主功能卡片 -->
+    <div class="main-features-section">
+      <div class="main-features-grid">
+        <div class="main-feature-card" @click="goToFeature('/learning/pvp-game')">
+          <div class="main-feature-icon">⚔️</div>
+          <div class="main-feature-content">
+            <h3 class="main-feature-title">在线对弈</h3>
+            <p class="main-feature-subtitle">开战</p>
+          </div>
+        </div>
+        <div class="main-feature-card" @click="goToFeature('/learning')">
+          <div class="main-feature-icon">📚</div>
+          <div class="main-feature-content">
+            <h3 class="main-feature-title">学棋</h3>
+            <p class="main-feature-subtitle">做题、视频讲解</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 最新动态 -->
+    <!-- 宣传栏列表 -->
     <div class="news-section">
-      <div class="container">
-        <div class="section-header">
-          <h3 class="section-title">最新动态</h3>
-          <router-link to="/news" class="more-link">更多 →</router-link>
-        </div>
-        <div class="news-list">
-          <div
-            v-for="item in news"
-            :key="item.id"
-            class="news-card"
-            @click="goToNews(item.id)"
-          >
-            <img :src="item.image" :alt="item.title" class="news-image" />
-            <div class="news-content">
-              <h4 class="news-title">{{ item.title }}</h4>
-              <p class="news-date">{{ item.date }}</p>
-            </div>
+      <div class="news-list">
+        <div
+          v-for="item in news"
+          :key="item.id"
+          class="news-item"
+          @click="goToNews(item.id)"
+        >
+          <img :src="item.image" :alt="item.title" class="news-thumbnail" />
+          <div class="news-content">
+            <h4 class="news-title">{{ item.title }}</h4>
+            <p class="news-date">{{ item.date }}</p>
           </div>
         </div>
       </div>
@@ -186,13 +179,50 @@ setInterval(() => {
 <style scoped>
 .home {
   padding-bottom: 20px;
+  background: #f5f5f5;
 }
 
+/* 搜索框 */
+.search-section {
+  padding: 16px;
+  background: #f5f5f5;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #e8e8e8;
+  border-radius: 20px;
+  padding: 10px 16px;
+  gap: 8px;
+}
+
+.search-icon {
+  font-size: 18px;
+  color: #999;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  color: #333;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+/* 轮播图 */
 .banner-section {
   position: relative;
-  width: 100%;
-  height: 300px;
+  width: calc(100% - 32px);
+  height: 200px;
   overflow: hidden;
+  margin: 0 16px 20px;
+  border-radius: 12px;
   background: #f0f0f0;
 }
 
@@ -222,19 +252,22 @@ setInterval(() => {
 
 .banner-content {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   left: 20px;
+  right: 20px;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .banner-content h2 {
-  font-size: 28px;
-  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
 }
 
 .banner-content p {
-  font-size: 16px;
+  font-size: 14px;
+  opacity: 0.95;
 }
 
 .banner-dots {
@@ -250,177 +283,169 @@ setInterval(() => {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .dot.active {
   background: white;
-  width: 24px;
+  width: 20px;
   border-radius: 4px;
 }
 
-.features-section {
-  padding: 30px 0;
-  background: white;
+/* 主功能卡片 */
+.main-features-section {
+  padding: 0 16px 20px;
+  background: #f5f5f5;
 }
 
-.section-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: var(--text-primary);
-}
-
-.features-grid {
+.main-features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.feature-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background: var(--bg-gray);
+.main-feature-card {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);
   border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-}
-
-.feature-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  padding: 20px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  margin-bottom: 12px;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+  transition: all 0.3s ease;
+  min-height: 90px;
 }
 
-.feature-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: var(--text-primary);
+.main-feature-card:active {
+  transform: scale(0.98);
 }
 
-.feature-desc {
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-align: center;
+.main-feature-icon {
+  font-size: 40px;
+  flex-shrink: 0;
 }
 
-.news-section {
-  padding: 30px 0;
-}
-
-.section-header {
+.main-feature-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.more-link {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-size: 14px;
+.main-feature-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.main-feature-subtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* 宣传栏列表 */
+.news-section {
+  padding: 0 16px 20px;
+  background: #f5f5f5;
 }
 
 .news-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
-.news-card {
+.news-item {
   display: flex;
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--shadow);
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  padding: 12px;
+  gap: 12px;
 }
 
-.news-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
+.news-item:active {
+  transform: scale(0.98);
 }
 
-.news-image {
-  width: 120px;
-  height: 90px;
+.news-thumbnail {
+  width: 100px;
+  height: 75px;
   object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .news-content {
   flex: 1;
-  padding: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  min-height: 75px;
 }
 
 .news-title {
   font-size: 15px;
   font-weight: 500;
-  margin-bottom: 8px;
-  color: var(--text-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #333;
+  line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
 }
 
 .news-date {
   font-size: 12px;
-  color: var(--text-light);
+  color: #999;
+  text-align: right;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
   .banner-section {
-    height: 200px;
+    height: 180px;
+    width: calc(100% - 24px);
+    margin: 0 12px 16px;
   }
 
-  .banner-content h2 {
-    font-size: 20px;
+  .main-feature-card {
+    padding: 16px;
+    min-height: 80px;
   }
 
-  .banner-content p {
+  .main-feature-icon {
+    font-size: 36px;
+  }
+
+  .main-feature-title {
+    font-size: 18px;
+  }
+
+  .main-feature-subtitle {
+    font-size: 11px;
+  }
+
+  .news-thumbnail {
+    width: 90px;
+    height: 68px;
+  }
+
+  .news-title {
     font-size: 14px;
   }
 
-  .features-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-
-  .feature-card {
-    padding: 16px 8px;
-  }
-
-  .feature-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-  }
-
-  .feature-title {
-    font-size: 14px;
-  }
-
-  .feature-desc {
+  .news-date {
     font-size: 11px;
   }
 }
