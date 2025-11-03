@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { Search, Trophy, Reading, Clock } from '@element-plus/icons-vue'
 import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
+const searchText = ref('')
 
 const banners = ref([
   {
@@ -109,68 +111,82 @@ setInterval(() => {
 
 <template>
   <div class="home">
+    <!-- 搜索框 -->
+    <div class="search-section">
+      <el-input
+        v-model="searchText"
+        placeholder="搜索围棋资源"
+        :prefix-icon="Search"
+        size="large"
+        class="search-input"
+      />
+    </div>
+
     <!-- 轮播图 -->
     <div class="banner-section">
-      <div class="banner-container">
-        <div
-          v-for="(banner, index) in banners"
-          :key="banner.id"
-          class="banner-item"
-          :class="{ active: index === currentBanner }"
-        >
-          <img :src="banner.image" :alt="banner.title" />
+      <el-carousel height="200px" :interval="5000" arrow="never">
+        <el-carousel-item v-for="banner in banners" :key="banner.id">
+          <img :src="banner.image" :alt="banner.title" class="banner-image" />
           <div class="banner-content">
             <h2>{{ banner.title }}</h2>
           </div>
-        </div>
-      </div>
-      <div class="banner-dots">
-        <span
-          v-for="(banner, index) in banners"
-          :key="banner.id"
-          class="dot"
-          :class="{ active: index === currentBanner }"
-          @click="currentBanner = index"
-        ></span>
-      </div>
+        </el-carousel-item>
+      </el-carousel>
     </div>
 
     <!-- 主功能卡片 -->
     <div class="main-features-section">
-      <div class="main-features-grid">
-        <div class="main-feature-card" @click="goToFeature('/learning/pvp-game')">
-          <div class="main-feature-icon">⚔️</div>
-          <div class="main-feature-content">
-            <h3 class="main-feature-title">在线对弈</h3>
-            <p class="main-feature-subtitle">开战</p>
-          </div>
-        </div>
-        <div class="main-feature-card" @click="goToFeature('/learning')">
-          <div class="main-feature-icon">📚</div>
-          <div class="main-feature-content">
-            <h3 class="main-feature-title">学棋</h3>
-            <p class="main-feature-subtitle">做题、视频讲解</p>
-          </div>
-        </div>
-      </div>
+      <el-row :gutter="12">
+        <el-col :span="12">
+          <el-card class="main-feature-card green-card" shadow="hover" @click="goToFeature('/learning/pvp-game')">
+            <div class="card-content">
+              <el-icon :size="40" class="feature-icon"><Trophy /></el-icon>
+              <div class="feature-text">
+                <h3>在线对弈</h3>
+                <p>开战</p>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="12">
+          <el-card class="main-feature-card blue-card" shadow="hover" @click="goToFeature('/learning')">
+            <div class="card-content">
+              <el-icon :size="40" class="feature-icon"><Reading /></el-icon>
+              <div class="feature-text">
+                <h3>学棋</h3>
+                <p>做题、视频讲解</p>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
     </div>
 
     <!-- 宣传栏列表 -->
     <div class="news-section">
-      <div class="news-list">
-        <div
-          v-for="item in news"
-          :key="item.id"
-          class="news-item"
-          @click="goToNews(item.id)"
-        >
-          <img :src="item.image" :alt="item.title" class="news-thumbnail" />
+      <el-card
+        v-for="item in news"
+        :key="item.id"
+        class="news-card"
+        shadow="hover"
+        @click="goToNews(item.id)"
+      >
+        <div class="news-item">
+          <el-image
+            :src="item.image"
+            :alt="item.title"
+            class="news-thumbnail"
+            fit="cover"
+          />
           <div class="news-content">
             <h4 class="news-title">{{ item.title }}</h4>
-            <p class="news-date">{{ item.date }}</p>
+            <div class="news-footer">
+              <el-icon class="time-icon"><Clock /></el-icon>
+              <span class="news-date">{{ item.date }}</span>
+            </div>
           </div>
         </div>
-      </div>
+      </el-card>
     </div>
   </div>
 </template>
@@ -179,71 +195,40 @@ setInterval(() => {
 .home {
   padding-bottom: 20px;
   background: #f5f5f5;
+  min-height: 100vh;
 }
 
 /* 搜索框 */
 .search-section {
   padding: 16px;
-  background: #f5f5f5;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  background: #e8e8e8;
-  border-radius: 20px;
-  padding: 10px 16px;
-  gap: 8px;
-}
-
-.search-icon {
-  font-size: 18px;
-  color: #999;
+  background: #ffffff;
 }
 
 .search-input {
-  flex: 1;
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 15px;
-  color: #333;
+  border-radius: 24px;
 }
 
-.search-input::placeholder {
-  color: #999;
+:deep(.el-input__wrapper) {
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* 轮播图 */
 .banner-section {
-  position: relative;
-  width: calc(100% - 32px);
-  height: 200px;
-  overflow: hidden;
   margin: 0 16px 20px;
   border-radius: 12px;
-  background: #f0f0f0;
+  overflow: hidden;
 }
 
-.banner-container {
+:deep(.el-carousel) {
+  border-radius: 12px;
+}
+
+:deep(.el-carousel__item) {
   position: relative;
-  width: 100%;
-  height: 100%;
 }
 
-.banner-item {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.banner-item.active {
-  opacity: 1;
-}
-
-.banner-item img {
+.banner-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -254,38 +239,24 @@ setInterval(() => {
   top: 20px;
   left: 20px;
   right: 20px;
+  z-index: 10;
 }
 
 .banner-content h2 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   margin: 0;
   color: #333;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.95),
+               0 2px 4px rgba(255, 255, 255, 0.8);
 }
 
-.banner-dots {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
+:deep(.el-carousel__indicator) {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background: white;
-  width: 20px;
-  border-radius: 4px;
+:deep(.el-carousel__indicator.is-active) {
+  background-color: var(--primary-color);
 }
 
 /* 主功能卡片 */
@@ -294,87 +265,86 @@ setInterval(() => {
   background: #f5f5f5;
 }
 
-.main-features-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
 .main-feature-card {
-  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
   transition: all 0.3s ease;
-  min-height: 90px;
+  border: none;
 }
 
 .main-feature-card:active {
   transform: scale(0.98);
 }
 
-.main-feature-icon {
-  font-size: 40px;
+.green-card {
+  background: var(--gradient-green);
+}
+
+.blue-card {
+  background: var(--gradient-blue);
+}
+
+:deep(.el-card__body) {
+  padding: 20px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.feature-icon {
+  color: white;
   flex-shrink: 0;
 }
 
-.main-feature-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.feature-text {
+  flex: 1;
+  color: white;
 }
 
-.main-feature-title {
+.feature-text h3 {
   font-size: 20px;
   font-weight: 600;
-  color: white;
-  margin: 0;
+  margin: 0 0 4px 0;
 }
 
-.main-feature-subtitle {
+.feature-text p {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.85);
   margin: 0;
+  opacity: 0.9;
 }
 
 /* 宣传栏列表 */
 .news-section {
   padding: 0 16px 20px;
   background: #f5f5f5;
-}
-
-.news-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.news-item {
-  display: flex;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
+.news-card {
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  padding: 12px;
-  gap: 12px;
 }
 
-.news-item:active {
+.news-card:active {
   transform: scale(0.98);
+}
+
+:deep(.news-card .el-card__body) {
+  padding: 12px;
+}
+
+.news-item {
+  display: flex;
+  gap: 12px;
 }
 
 .news-thumbnail {
   width: 100px;
   height: 75px;
-  object-fit: cover;
   border-radius: 8px;
   flex-shrink: 0;
 }
@@ -384,14 +354,13 @@ setInterval(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 75px;
 }
 
 .news-title {
   font-size: 15px;
   font-weight: 500;
   color: #333;
-  line-height: 1.4;
+  line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -399,34 +368,45 @@ setInterval(() => {
   margin: 0;
 }
 
+.news-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.time-icon {
+  font-size: 12px;
+  color: #999;
+}
+
 .news-date {
   font-size: 12px;
   color: #999;
-  text-align: right;
-  margin: 0;
 }
 
 @media (max-width: 768px) {
   .banner-section {
-    height: 180px;
-    width: calc(100% - 24px);
     margin: 0 12px 16px;
   }
 
-  .main-feature-card {
-    padding: 16px;
-    min-height: 80px;
-  }
-
-  .main-feature-icon {
-    font-size: 36px;
-  }
-
-  .main-feature-title {
+  .banner-content h2 {
     font-size: 18px;
   }
 
-  .main-feature-subtitle {
+  :deep(.el-card__body) {
+    padding: 16px;
+  }
+
+  .feature-icon {
+    font-size: 36px;
+  }
+
+  .feature-text h3 {
+    font-size: 18px;
+  }
+
+  .feature-text p {
     font-size: 11px;
   }
 
