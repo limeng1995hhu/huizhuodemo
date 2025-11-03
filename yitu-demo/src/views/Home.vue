@@ -121,7 +121,6 @@ setInterval(() => {
           <img :src="banner.image" :alt="banner.title" />
           <div class="banner-content">
             <h2>{{ banner.title }}</h2>
-            <p>{{ banner.subtitle }}</p>
           </div>
         </div>
       </div>
@@ -252,22 +251,17 @@ setInterval(() => {
 
 .banner-content {
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   left: 20px;
   right: 20px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .banner-content h2 {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.banner-content p {
-  font-size: 14px;
-  opacity: 0.95;
+  margin: 0;
+  color: #333;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
 }
 
 .banner-dots {
