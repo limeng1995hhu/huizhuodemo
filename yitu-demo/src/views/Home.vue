@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { Trophy, Reading, Clock } from '@element-plus/icons-vue'
+import { Trophy, Reading, Clock, Compass, ShoppingBag } from '@element-plus/icons-vue'
 import logoImg from '../assets/logo.jpg'
 
 const router = useRouter()
@@ -155,7 +155,7 @@ setInterval(() => {
         <el-col :span="12">
           <el-card class="main-feature-card green-card" shadow="hover" @click="goToFeature('/learning/pvp-game')">
             <div class="card-content">
-              <el-icon :size="40" class="feature-icon"><Trophy /></el-icon>
+              <el-icon :size="28" class="feature-icon"><Trophy /></el-icon>
               <div class="feature-text">
                 <h3>在线对弈</h3>
                 <p>开战</p>
@@ -166,10 +166,34 @@ setInterval(() => {
         <el-col :span="12">
           <el-card class="main-feature-card blue-card" shadow="hover" @click="goToFeature('/learning')">
             <div class="card-content">
-              <el-icon :size="40" class="feature-icon"><Reading /></el-icon>
+              <el-icon :size="28" class="feature-icon"><Reading /></el-icon>
               <div class="feature-text">
                 <h3>学棋</h3>
                 <p>做题、视频讲解</p>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <el-row :gutter="12" style="margin-top: 12px;">
+        <el-col :span="12">
+          <el-card class="main-feature-card orange-card" shadow="hover" @click="goToFeature('/events')">
+            <div class="card-content">
+              <el-icon :size="28" class="feature-icon"><Compass /></el-icon>
+              <div class="feature-text">
+                <h3>研学</h3>
+                <p>旅游资讯</p>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="12">
+          <el-card class="main-feature-card purple-card" shadow="hover" @click="goToFeature('/shop')">
+            <div class="card-content">
+              <el-icon :size="28" class="feature-icon"><ShoppingBag /></el-icon>
+              <div class="feature-text">
+                <h3>文创</h3>
+                <p>在线购物</p>
               </div>
             </div>
           </el-card>
@@ -211,13 +235,9 @@ setInterval(() => {
         <h3 class="section-title">赞助商</h3>
       </div>
       <el-card class="sponsor-card" shadow="hover">
-        <el-image
-          :src="logoImg"
-          alt="赞助商"
-          class="sponsor-image"
-          fit="cover"
-        />
-        <div class="ad-badge">广告</div>
+        <div class="sponsor-image" :style="{ backgroundImage: `url(${logoImg})` }">
+          <div class="ad-badge">广告</div>
+        </div>
       </el-card>
     </div>
 
@@ -429,8 +449,78 @@ setInterval(() => {
   pointer-events: none;
 }
 
+.orange-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景图片层 */
+.orange-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/travel.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 橙色渐变遮罩层 */
+.orange-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.85) 0%, rgba(255, 143, 0, 0.75) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.purple-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景图片层 */
+.purple-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/shop.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 紫色渐变遮罩层 */
+.purple-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.85) 0%, rgba(171, 71, 188, 0.75) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
 :deep(.main-feature-card .el-card__body) {
-  padding: 24px;
+  padding: 12px;
   position: relative;
   z-index: 3;
 }
@@ -438,13 +528,14 @@ setInterval(() => {
 .card-content {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 
 .feature-icon {
   color: white;
   flex-shrink: 0;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  font-size: 28px;
 }
 
 .feature-text {
@@ -453,15 +544,15 @@ setInterval(() => {
 }
 
 .feature-text h3 {
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 700;
-  margin: 0 0 6px 0;
+  margin: 0 0 3px 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 0.5px;
 }
 
 .feature-text p {
-  font-size: 13px;
+  font-size: 11px;
   margin: 0;
   opacity: 0.95;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -608,6 +699,11 @@ setInterval(() => {
   width: 100%;
   height: 180px;
   border-radius: 16px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f5f5f5;
+  position: relative;
 }
 
 .ad-badge {
@@ -623,6 +719,7 @@ setInterval(() => {
   font-weight: 600;
   letter-spacing: 1px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 /* 合作伙伴 */
@@ -715,8 +812,8 @@ setInterval(() => {
     width: 15px;
   }
 
-  :deep(.el-card__body) {
-    padding: 20px;
+  :deep(.main-feature-card .el-card__body) {
+    padding: 10px;
   }
 
   :deep(.news-card .el-card__body) {
@@ -724,15 +821,15 @@ setInterval(() => {
   }
 
   .feature-icon {
-    font-size: 36px;
+    font-size: 24px;
   }
 
   .feature-text h3 {
-    font-size: 20px;
+    font-size: 14px;
   }
 
   .feature-text p {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .news-thumbnail {
