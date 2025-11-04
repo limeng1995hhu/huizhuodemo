@@ -125,14 +125,19 @@ setInterval(() => {
   <div class="home">
     <!-- 轮播图 -->
     <div class="banner-section">
-      <el-carousel height="200px" :interval="5000" arrow="never" indicator-position="none">
-        <el-carousel-item v-for="banner in banners" :key="banner.id">
-          <img :src="banner.image" :alt="banner.title" class="banner-image" />
+      <div class="banner-wrapper">
+        <div
+          v-for="(banner, index) in banners"
+          :key="banner.id"
+          class="banner-slide"
+          :class="{ active: index === currentBanner }"
+          :style="{ backgroundImage: `url(${banner.image})` }"
+        >
           <div class="banner-content">
             <h2>{{ banner.title }}</h2>
           </div>
-        </el-carousel-item>
-      </el-carousel>
+        </div>
+      </div>
       <div class="custom-indicators">
         <span
           v-for="(banner, index) in banners"
@@ -253,32 +258,44 @@ setInterval(() => {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
+  height: 100px;
 }
 
-:deep(.el-carousel) {
-  border-radius: 12px;
-}
-
-:deep(.el-carousel__item) {
+.banner-wrapper {
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
-.banner-image {
+.banner-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.banner-slide.active {
+  opacity: 1;
+  z-index: 2;
 }
 
 .banner-content {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  z-index: 10;
+  top: 10px;
+  left: 16px;
+  right: 16px;
+  z-index: 3;
 }
 
 .banner-content h2 {
-  font-size: 22px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
   color: #333;
@@ -289,17 +306,17 @@ setInterval(() => {
 /* 自定义圆点指示器 */
 .custom-indicators {
   position: absolute;
-  bottom: 12px;
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
-  z-index: 10;
+  gap: 6px;
+  z-index: 3;
 }
 
 .indicator-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
@@ -312,8 +329,8 @@ setInterval(() => {
 
 .indicator-dot.active {
   background-color: var(--primary-color);
-  width: 24px;
-  border-radius: 4px;
+  width: 18px;
+  border-radius: 3px;
 }
 
 /* 主功能卡片 */
@@ -342,10 +359,11 @@ setInterval(() => {
 }
 
 .green-card {
-  background: var(--gradient-green);
   position: relative;
+  overflow: hidden;
 }
 
+/* 背景图片层 */
 .green-card::before {
   content: '';
   position: absolute;
@@ -353,15 +371,34 @@ setInterval(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: url('../assets/battle.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3; /* 调整这个值来控制背景图片透明度：0（完全透明）到 1（完全不透明） */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 绿色渐变遮罩层 */
+.green-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 166, 81, 0.7) 0%, rgba(0, 200, 83, 0.6) 100%);
+  z-index: 2;
   pointer-events: none;
 }
 
 .blue-card {
-  background: var(--gradient-blue);
   position: relative;
+  overflow: hidden;
 }
 
+/* 背景图片层 */
 .blue-card::before {
   content: '';
   position: absolute;
@@ -369,14 +406,32 @@ setInterval(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: url('../assets/course.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3; /* 调整这个值来控制背景图片透明度：0（完全透明）到 1（完全不透明） */
+  z-index: 1;
   pointer-events: none;
 }
 
-:deep(.el-card__body) {
+/* 蓝色渐变遮罩层 */
+.blue-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 160, 233, 0.7) 0%, rgba(2, 136, 209, 0.6) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+:deep(.main-feature-card .el-card__body) {
   padding: 24px;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .card-content {
@@ -632,10 +687,31 @@ setInterval(() => {
 @media (max-width: 768px) {
   .banner-section {
     margin: 12px 12px 16px;
+    height: 100px;
   }
 
   .banner-content h2 {
-    font-size: 18px;
+    font-size: 14px;
+  }
+
+  .banner-content {
+    top: 8px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .custom-indicators {
+    bottom: 6px;
+    gap: 5px;
+  }
+
+  .indicator-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .indicator-dot.active {
+    width: 15px;
   }
 
   :deep(.el-card__body) {
