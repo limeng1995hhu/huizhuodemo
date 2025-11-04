@@ -273,9 +273,10 @@ setInterval(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: 100% 100%;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #f5f5f5;
   opacity: 0;
   transition: opacity 0.5s ease;
   z-index: 1;
