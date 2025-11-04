@@ -155,7 +155,7 @@ setInterval(() => {
         <el-col :span="12">
           <el-card class="main-feature-card green-card" shadow="hover" @click="goToFeature('/learning/pvp-game')">
             <div class="card-content">
-              <el-icon :size="28" class="feature-icon"><Trophy /></el-icon>
+              <el-icon :size="32" class="feature-icon"><Trophy /></el-icon>
               <div class="feature-text">
                 <h3>在线对弈</h3>
                 <p>开战</p>
@@ -166,7 +166,7 @@ setInterval(() => {
         <el-col :span="12">
           <el-card class="main-feature-card blue-card" shadow="hover" @click="goToFeature('/learning')">
             <div class="card-content">
-              <el-icon :size="28" class="feature-icon"><Reading /></el-icon>
+              <el-icon :size="32" class="feature-icon"><Reading /></el-icon>
               <div class="feature-text">
                 <h3>学棋</h3>
                 <p>做题、视频讲解</p>
@@ -179,7 +179,7 @@ setInterval(() => {
         <el-col :span="12">
           <el-card class="main-feature-card orange-card" shadow="hover" @click="goToFeature('/events')">
             <div class="card-content">
-              <el-icon :size="28" class="feature-icon"><Compass /></el-icon>
+              <el-icon :size="32" class="feature-icon"><Compass /></el-icon>
               <div class="feature-text">
                 <h3>研学</h3>
                 <p>旅游资讯</p>
@@ -190,7 +190,7 @@ setInterval(() => {
         <el-col :span="12">
           <el-card class="main-feature-card purple-card" shadow="hover" @click="goToFeature('/shop')">
             <div class="card-content">
-              <el-icon :size="28" class="feature-icon"><ShoppingBag /></el-icon>
+              <el-icon :size="32" class="feature-icon"><ShoppingBag /></el-icon>
               <div class="feature-text">
                 <h3>文创</h3>
                 <p>在线购物</p>
@@ -272,13 +272,14 @@ setInterval(() => {
   min-height: 100vh;
 }
 
-/* 轮播图 */
+/* 轮播图 - Apple风格 */
 .banner-section {
-  margin: 16px 16px 20px;
-  border-radius: 12px;
+  margin: 20px 20px 24px;
+  border-radius: 20px;
   overflow: hidden;
   position: relative;
-  height: 100px;
+  height: 120px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .banner-wrapper {
@@ -298,7 +299,7 @@ setInterval(() => {
   background-repeat: no-repeat;
   background-color: #f5f5f5;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
 }
 
@@ -309,74 +310,81 @@ setInterval(() => {
 
 .banner-content {
   position: absolute;
-  top: 10px;
-  left: 16px;
-  right: 16px;
+  top: 16px;
+  left: 20px;
+  right: 20px;
   z-index: 3;
 }
 
 .banner-content h2 {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 600;
   margin: 0;
-  color: #333;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.95),
-               0 2px 4px rgba(255, 255, 255, 0.8);
+  color: #1d1d1f;
+  letter-spacing: -0.5px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 
-/* 自定义圆点指示器 */
+/* 自定义圆点指示器 - Apple风格 */
 .custom-indicators {
   position: absolute;
-  bottom: 8px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 6px;
+  gap: 8px;
   z-index: 3;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
 }
 
 .indicator-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .indicator-dot:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: scale(1.15);
 }
 
 .indicator-dot.active {
-  background-color: var(--primary-color);
-  width: 18px;
-  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 24px;
+  border-radius: 4px;
 }
 
-/* 主功能卡片 */
+/* 主功能卡片 - Apple风格 */
 .main-features-section {
-  padding: 0 16px 20px;
+  padding: 0 20px 24px;
   background: #f5f5f5;
 }
 
 .main-feature-card {
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
   border: none;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
 .main-feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 .main-feature-card:active {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
 .green-card {
@@ -520,7 +528,7 @@ setInterval(() => {
 }
 
 :deep(.main-feature-card .el-card__body) {
-  padding: 12px;
+  padding: 16px;
   position: relative;
   z-index: 3;
 }
@@ -528,14 +536,14 @@ setInterval(() => {
 .card-content {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .feature-icon {
   color: white;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-  font-size: 28px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
+  font-size: 32px;
 }
 
 .feature-text {
@@ -544,63 +552,65 @@ setInterval(() => {
 }
 
 .feature-text h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 3px 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  letter-spacing: 0.5px;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.3px;
 }
 
 .feature-text p {
-  font-size: 11px;
+  font-size: 12px;
   margin: 0;
-  opacity: 0.95;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.1px;
 }
 
-/* 宣传栏列表 */
+/* 宣传栏列表 - Apple风格 */
 .news-section {
-  padding: 0 16px 20px;
+  padding: 0 20px 24px;
   background: #f5f5f5;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .news-card {
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 12px;
+  transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   background: white;
 }
 
 .news-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .news-card:active {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px) scale(1.005);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
 :deep(.news-card .el-card__body) {
-  padding: 16px;
+  padding: 14px;
 }
 
 .news-item {
   display: flex;
-  gap: 16px;
+  gap: 14px;
 }
 
 .news-thumbnail {
-  width: 110px;
-  height: 82px;
-  border-radius: 10px;
+  width: 100px;
+  height: 75px;
+  border-radius: 12px;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .news-content {
@@ -608,87 +618,88 @@ setInterval(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4px 0;
+  padding: 2px 0;
 }
 
 .news-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  color: #333;
-  line-height: 1.5;
+  color: #1d1d1f;
+  line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 0;
-  letter-spacing: 0.3px;
+  letter-spacing: -0.2px;
 }
 
 .news-footer {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   justify-content: flex-end;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .time-icon {
-  font-size: 13px;
-  color: #999;
+  font-size: 12px;
+  color: #86868b;
 }
 
 .news-date {
-  font-size: 13px;
-  color: #999;
-  font-weight: 500;
+  font-size: 12px;
+  color: #86868b;
+  font-weight: 400;
+  letter-spacing: -0.1px;
 }
 
-/* 赞助商广告位 */
+/* 赞助商广告位 - Apple风格 */
 .sponsor-section {
-  padding: 0 16px 20px;
+  padding: 0 20px 24px;
   background: #f5f5f5;
 }
 
 .section-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 16px;
 }
 
 .header-line {
-  width: 4px;
-  height: 20px;
+  width: 3px;
+  height: 24px;
   background: var(--gradient-green);
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0, 166, 81, 0.3);
+  border-radius: 1.5px;
 }
 
 .section-title {
-  font-size: 19px;
-  font-weight: 700;
-  color: #333;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1d1d1f;
   margin: 0;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.5px;
 }
 
 .sponsor-card {
   position: relative;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 16px;
+  transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
 .sponsor-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 .sponsor-card:active {
-  transform: translateY(-3px);
-  box-shadow: 0 9px 26px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px) scale(1.005);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
 :deep(.sponsor-card .el-card__body) {
@@ -722,27 +733,27 @@ setInterval(() => {
   z-index: 1;
 }
 
-/* 合作伙伴 */
+/* 合作伙伴 - Apple风格 */
 .partner-section {
-  padding: 0 16px 20px;
+  padding: 0 20px 24px;
   background: #f5f5f5;
 }
 
 .partner-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 .partner-item {
   background: white;
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: 16px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -755,14 +766,14 @@ setInterval(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 166, 81, 0.05) 0%, rgba(0, 160, 233, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(0, 166, 81, 0.03) 0%, rgba(0, 160, 233, 0.03) 100%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .partner-item:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .partner-item:hover::before {
@@ -789,52 +800,53 @@ setInterval(() => {
   }
 
   .banner-content h2 {
-    font-size: 14px;
+    font-size: 17px;
   }
 
   .banner-content {
-    top: 8px;
-    left: 12px;
-    right: 12px;
+    top: 12px;
+    left: 16px;
+    right: 16px;
   }
 
   .custom-indicators {
-    bottom: 6px;
-    gap: 5px;
+    bottom: 10px;
+    gap: 6px;
+    padding: 5px 10px;
   }
 
   .indicator-dot {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
   }
 
   .indicator-dot.active {
-    width: 15px;
+    width: 20px;
   }
 
   :deep(.main-feature-card .el-card__body) {
-    padding: 10px;
-  }
-
-  :deep(.news-card .el-card__body) {
     padding: 14px;
   }
 
+  :deep(.news-card .el-card__body) {
+    padding: 12px;
+  }
+
   .feature-icon {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .feature-text h3 {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .feature-text p {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .news-thumbnail {
-    width: 100px;
-    height: 75px;
+    width: 90px;
+    height: 68px;
   }
 
   .news-title {
