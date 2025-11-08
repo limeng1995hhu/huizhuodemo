@@ -376,7 +376,7 @@ setInterval(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('../assets/battle.png');
+  background-image: url('../assets/battle.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -411,7 +411,7 @@ setInterval(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('../assets/course.png');
+  background-image: url('../assets/course.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -446,7 +446,7 @@ setInterval(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('../assets/travel.png');
+  background-image: url('../assets/travel.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -481,7 +481,7 @@ setInterval(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('../assets/shop.png');
+  background-image: url('../assets/shop.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
