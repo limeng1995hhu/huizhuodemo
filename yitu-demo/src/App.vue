@@ -1,11 +1,8 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
-const router = useRouter()
 const route = useRoute()
-
-const isLoggedIn = ref(false)
 
 const showBottomNav = computed(() => {
   const hideNavRoutes = ['/login']
@@ -19,14 +16,6 @@ const navItems = [
   { name: '商城', path: '/shop', icon: '🛒' },
   { name: '我的', path: '/profile', icon: '👤' }
 ]
-
-const goToProfile = () => {
-  if (isLoggedIn.value) {
-    router.push('/profile')
-  } else {
-    router.push('/login')
-  }
-}
 </script>
 
 <template>
@@ -35,11 +24,6 @@ const goToProfile = () => {
     <header class="header">
       <div class="header-content">
         <div class="logo">弈途</div>
-        <div class="header-right">
-          <button class="user-btn" @click="goToProfile">
-            {{ isLoggedIn ? '👤 我的' : '登录' }}
-          </button>
-        </div>
       </div>
     </header>
 
@@ -79,7 +63,7 @@ const goToProfile = () => {
   margin: 0 auto;
   padding: 12px 16px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -87,21 +71,6 @@ const goToProfile = () => {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 2px;
-}
-
-.user-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.user-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
 }
 
 .main-content {
