@@ -22,14 +22,6 @@ const stats = ref([
 
 const menuItems = [
   {
-    section: '我的活动',
-    items: [
-      { icon: '🏆', label: '我的赛事', path: '/events', badge: 2 },
-      { icon: '📚', label: '学习记录', path: '/learning' },
-      { icon: '🛒', label: '我的订单', path: '/orders', badge: 1 }
-    ]
-  },
-  {
     section: '设置',
     items: [
       { icon: '👤', label: '个人信息', action: 'editProfile' },

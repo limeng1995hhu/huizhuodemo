@@ -82,8 +82,6 @@ filterNews()
 <template>
   <div class="news-page">
     <div class="container">
-      <h1 class="page-title">宣传栏</h1>
-
       <!-- 标签页 -->
       <div class="tabs">
         <button

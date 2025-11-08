@@ -155,8 +155,7 @@ setInterval(() => {
             <div class="card-content">
               <el-icon :size="32" class="feature-icon"><Trophy /></el-icon>
               <div class="feature-text">
-                <h3>在线对弈</h3>
-                <p>开战</p>
+                <h3>在线对弈 <span class="feature-desc">开战</span></h3>
               </div>
             </div>
           </el-card>
@@ -166,8 +165,7 @@ setInterval(() => {
             <div class="card-content">
               <el-icon :size="32" class="feature-icon"><Reading /></el-icon>
               <div class="feature-text">
-                <h3>学棋</h3>
-                <p>做题、视频讲解</p>
+                <h3>学棋 <span class="feature-desc">做题、视频讲解</span></h3>
               </div>
             </div>
           </el-card>
@@ -179,8 +177,7 @@ setInterval(() => {
             <div class="card-content">
               <el-icon :size="32" class="feature-icon"><Compass /></el-icon>
               <div class="feature-text">
-                <h3>研学</h3>
-                <p>旅游资讯</p>
+                <h3>研学 <span class="feature-desc">旅游资讯</span></h3>
               </div>
             </div>
           </el-card>
@@ -190,8 +187,7 @@ setInterval(() => {
             <div class="card-content">
               <el-icon :size="32" class="feature-icon"><ShoppingBag /></el-icon>
               <div class="feature-text">
-                <h3>文创</h3>
-                <p>在线购物</p>
+                <h3>文创 <span class="feature-desc">在线购物</span></h3>
               </div>
             </div>
           </el-card>
@@ -534,16 +530,18 @@ setInterval(() => {
 .feature-text h3 {
   font-size: 17px;
   font-weight: 600;
-  margin: 0 0 2px 0;
+  margin: 0;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.feature-text p {
+.feature-desc {
   font-size: 12px;
-  margin: 0;
-  opacity: 0.9;
   font-weight: 400;
+  opacity: 0.9;
   letter-spacing: -0.1px;
 }
 
@@ -808,9 +806,10 @@ setInterval(() => {
 
   .feature-text h3 {
     font-size: 15px;
+    gap: 6px;
   }
 
-  .feature-text p {
+  .feature-desc {
     font-size: 11px;
   }
 

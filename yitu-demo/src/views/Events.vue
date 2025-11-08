@@ -110,8 +110,6 @@ filterEvents()
 <template>
   <div class="events-page">
     <div class="container">
-      <h1 class="page-title">围棋赛事</h1>
-
       <!-- 标签页 -->
       <div class="tabs">
         <button

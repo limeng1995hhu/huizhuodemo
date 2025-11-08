@@ -6,7 +6,7 @@ const router = useRouter()
 
 const userStats = ref({
   coins: 1280,
-  level: '业余3段',
+  level: '3d',
   winRate: 65,
   totalGames: 156
 })
@@ -126,7 +126,6 @@ const goToModule = (path) => {
               </div>
               <h4 class="module-title">{{ module.title }}</h4>
             </div>
-            <p class="module-description">{{ module.description }}</p>
             <div class="module-features">
               <span
                 v-for="(feature, index) in module.features"
@@ -137,47 +136,13 @@ const goToModule = (path) => {
               </span>
             </div>
             <button class="module-btn" :style="{ backgroundColor: module.color }">
-              开始学习 →
+              开始 →
             </button>
           </div>
         </div>
       </div>
 
-      <!-- 最近活动 -->
-      <div class="activities-section">
-        <h3 class="section-title">最近活动</h3>
-        <div class="activities-list">
-          <div
-            v-for="activity in recentActivities"
-            :key="activity.id"
-            class="activity-item card"
-          >
-            <div class="activity-content">
-              <div class="activity-title">{{ activity.title }}</div>
-              <div class="activity-meta">
-                <span class="activity-result">{{ activity.result }}</span>
-                <span class="activity-time">{{ activity.time }}</span>
-              </div>
-            </div>
-            <div class="activity-reward">
-              <span class="coin-icon">🪙</span>
-              <span class="coin-amount">+{{ activity.coins }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- 虚拟币说明 -->
-      <div class="info-card card">
-        <h4>💡 虚拟币获取方式</h4>
-        <ul class="info-list">
-          <li>每日登录：+5 虚拟币</li>
-          <li>完成对弈：+10 虚拟币</li>
-          <li>完成习题：+1 虚拟币/题</li>
-          <li>观看视频：+3 虚拟币/次</li>
-        </ul>
-        <p class="info-tip">虚拟币可在商城兑换围棋用品和文创周边</p>
-      </div>
     </div>
   </div>
 </template>
@@ -304,13 +269,6 @@ const goToModule = (path) => {
   font-size: 18px;
   font-weight: 600;
   color: var(--text-primary);
-}
-
-.module-description {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 12px;
-  line-height: 1.5;
 }
 
 .module-features {

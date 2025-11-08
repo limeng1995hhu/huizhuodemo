@@ -97,8 +97,6 @@ filterProducts()
 <template>
   <div class="shop-page">
     <div class="container">
-      <h1 class="page-title">围棋商城</h1>
-
       <!-- 分类标签 -->
       <div class="categories">
         <button
