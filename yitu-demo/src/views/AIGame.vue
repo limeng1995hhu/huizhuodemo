@@ -7,15 +7,15 @@ const selectedLevel = ref('5k')
 const gameStarted = ref(false)
 
 const levels = [
-  { value: '18k', label: '18级' },
-  { value: '15k', label: '15级' },
-  { value: '10k', label: '10级' },
-  { value: '5k', label: '5级' },
-  { value: '1k', label: '1级' },
-  { value: '1d', label: '业余1段' },
-  { value: '3d', label: '业余3段' },
-  { value: '5d', label: '业余5段' },
-  { value: '9d', label: '业余9段' }
+  { value: '18k', label: '18k' },
+  { value: '15k', label: '15k' },
+  { value: '10k', label: '10k' },
+  { value: '5k', label: '5k' },
+  { value: '1k', label: '1k' },
+  { value: '1d', label: '1d' },
+  { value: '3d', label: '3d' },
+  { value: '5d', label: '5d' },
+  { value: '9d', label: '9d' }
 ]
 
 const startGame = () => {
@@ -35,7 +35,6 @@ const goBack = () => {
       <div v-if="!gameStarted" class="setup-section">
         <h1 class="page-title">AI对弈</h1>
         <div class="setup-card card">
-          <h3>选择AI难度</h3>
           <div class="levels-grid">
             <button
               v-for="level in levels"
@@ -54,11 +53,7 @@ const goBack = () => {
         
         <div class="tips-card card">
           <h4>💡 对弈说明</h4>
-          <ul>
-            <li>支持悔棋功能（最多3次）</li>
-            <li>对弈结束后可查看复盘</li>
-            <li>完成对弈可获得10虚拟币</li>
-          </ul>
+          <p class="time-rule">每方30分钟30秒3次</p>
         </div>
       </div>
 
@@ -87,7 +82,6 @@ const goBack = () => {
         <div class="game-controls">
           <button class="control-btn">悔棋</button>
           <button class="control-btn">认输</button>
-          <button class="control-btn btn-primary">结束对弈</button>
         </div>
       </div>
     </div>
@@ -168,24 +162,11 @@ const goBack = () => {
   margin-bottom: 12px;
 }
 
-.tips-card ul {
-  list-style: none;
-  padding: 0;
-}
-
-.tips-card li {
-  padding: 6px 0;
-  padding-left: 20px;
-  position: relative;
+.time-rule {
   font-size: 14px;
   color: var(--text-secondary);
-}
-
-.tips-card li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
+  margin: 0;
+  padding: 8px 0;
 }
 
 .game-section {
