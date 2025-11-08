@@ -312,15 +312,13 @@ setInterval(() => {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin: 0 20px 24px;
   padding: 6px 12px;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-radius: 20px;
   width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 24px auto;
 }
 
 .indicator-dot {
@@ -782,7 +780,7 @@ setInterval(() => {
   }
 
   .custom-indicators {
-    margin: 0 12px 16px;
+    margin: 0 auto 16px auto;
     gap: 6px;
     padding: 5px 10px;
   }

@@ -122,7 +122,6 @@ filterEvents()
           @click="activeTab = tab.key; filterEvents()"
         >
           {{ tab.label }}
-          <span class="tab-count">{{ tab.count }}</span>
         </button>
       </div>
 
@@ -185,45 +184,36 @@ filterEvents()
 
 .tabs {
   display: flex;
-  gap: 12px;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 0;
   margin-bottom: 20px;
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab-btn {
-  flex: 1;
-  padding: 10px 16px;
+  padding: 8px 20px;
   border: 1px solid var(--border-color);
   background: white;
-  border-radius: 6px;
+  border-radius: 20px;
   font-size: 14px;
+  white-space: nowrap;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: var(--text-secondary);
+}
+
+.tab-btn:hover {
+  border-color: var(--primary-color);
 }
 
 .tab-btn.active {
   background: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
-}
-
-.tab-count {
-  background: rgba(0, 0, 0, 0.1);
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 12px;
-}
-
-.tab-btn.active .tab-count {
-  background: rgba(255, 255, 255, 0.3);
 }
 
 .events-list {
@@ -251,12 +241,14 @@ filterEvents()
   width: 100%;
   height: 200px;
   overflow: hidden;
+  background-color: #f5f5f5;
 }
 
 .event-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #f5f5f5;
 }
 
 .event-status {

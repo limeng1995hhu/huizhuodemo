@@ -213,7 +213,7 @@ filterProducts()
   padding-top: 100%;
   position: relative;
   overflow: hidden;
-  background: var(--bg-gray);
+  background-color: #f5f5f5;
 }
 
 .product-image img {
@@ -222,7 +222,8 @@ filterProducts()
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #f5f5f5;
   transition: transform 0.3s ease;
 }
 
