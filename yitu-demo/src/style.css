@@ -216,16 +216,52 @@ body > nav:not(.bottom-nav) {
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
+
+/* 隐藏所有不在 #app 内的按钮和导航 */
+body > button:not(.user-btn):not(.el-button),
+body > nav:not(.bottom-nav),
+body > div:not(#app):not(script):not(style) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
 }
 
 /* 隐藏微信浏览器底部工具栏 */
 body {
   padding-bottom: env(safe-area-inset-bottom) !important;
+  overflow-x: hidden !important;
 }
 
 /* 确保底部导航栏在最上层 */
 .bottom-nav {
-  z-index: 9999 !important;
+  z-index: 99999 !important;
   position: fixed !important;
   bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* 使用 CSS 动画持续隐藏微信导航 */
+@keyframes hideWxNav {
+  0%, 100% {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+  }
+}
+
+body > *:not(#app) {
+  animation: hideWxNav 0.1s infinite !important;
 }

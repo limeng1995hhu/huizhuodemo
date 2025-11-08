@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
@@ -27,6 +27,64 @@ const goToProfile = () => {
     router.push('/login')
   }
 }
+
+// 隐藏微信浏览器导航按钮的函数
+const hideWeChatNav = () => {
+  const isWeChat = /MicroMessenger/i.test(navigator.userAgent)
+  if (!isWeChat) return
+
+  // 查找并隐藏所有可能的导航按钮
+  const hideElements = () => {
+    const selectors = [
+      'body > div:not(#app)',
+      'body > button:not(.user-btn):not(.el-button)',
+      'body > nav:not(.bottom-nav)',
+      '[class*="wx-nav"]',
+      '[id*="wx-nav"]'
+    ]
+
+    selectors.forEach(selector => {
+      try {
+        document.querySelectorAll(selector).forEach(el => {
+          if (el && el.id !== 'app') {
+            el.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;'
+          }
+        })
+      } catch (e) {
+        // 忽略错误
+      }
+    })
+
+    // 隐藏包含箭头符号的按钮
+    document.querySelectorAll('button, a, div[role="button"]').forEach(btn => {
+      const text = btn.textContent.trim()
+      if ((text === '<' || text === '>' || text === '←' || text === '→') && !btn.closest('#app')) {
+        btn.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;'
+      }
+    })
+  }
+
+  hideElements()
+  setTimeout(hideElements, 100)
+  setTimeout(hideElements, 300)
+  setTimeout(hideElements, 500)
+}
+
+// 监听路由变化
+watch(() => route.path, () => {
+  // 路由切换时立即隐藏导航按钮
+  hideWeChatNav()
+  // 延迟再次隐藏（因为微信浏览器可能在动画后显示）
+  setTimeout(hideWeChatNav, 100)
+  setTimeout(hideWeChatNav, 300)
+  setTimeout(hideWeChatNav, 500)
+  setTimeout(hideWeChatNav, 1000)
+})
+
+// 组件挂载时执行
+onMounted(() => {
+  hideWeChatNav()
+})
 </script>
 
 <template>
