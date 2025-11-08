@@ -40,20 +40,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // 静态资源分类打包
-        chunkFileNames: 'js/[name]-[hash].js',
-        entryFileNames: 'js/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          // 图片文件
-          if (/\.(png|jpe?g|gif|svg|webp)$/i.test(assetInfo.name)) {
-            return 'images/[name]-[hash][extname]'
-          }
-          // CSS 文件
-          if (/\.css$/i.test(assetInfo.name)) {
-            return 'css/[name]-[hash][extname]'
-          }
-          // 其他资源
-          return 'assets/[name]-[hash][extname]'
-        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash][extname]',
         // 代码分割
         manualChunks: {
           // 将 Vue 相关库打包到一起
