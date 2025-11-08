@@ -135,15 +135,16 @@ setInterval(() => {
         >
         </div>
       </div>
-      <div class="custom-indicators">
-        <span
-          v-for="(banner, index) in banners"
-          :key="banner.id"
-          class="indicator-dot"
-          :class="{ active: index === currentBanner }"
-          @click="currentBanner = index"
-        ></span>
-      </div>
+    </div>
+    <!-- 轮播图指示器 -->
+    <div class="custom-indicators">
+      <span
+        v-for="(banner, index) in banners"
+        :key="banner.id"
+        class="indicator-dot"
+        :class="{ active: index === currentBanner }"
+        @click="currentBanner = index"
+      ></span>
     </div>
 
     <!-- 主功能卡片 -->
@@ -271,7 +272,7 @@ setInterval(() => {
 
 /* 轮播图 - Apple风格 */
 .banner-section {
-  margin: 20px 20px 24px;
+  margin: 20px 20px 12px;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -307,18 +308,19 @@ setInterval(() => {
 
 /* 自定义圆点指示器 - Apple风格 */
 .custom-indicators {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 8px;
-  z-index: 3;
+  margin: 0 20px 24px;
   padding: 6px 12px;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-radius: 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .indicator-dot {
@@ -775,12 +777,12 @@ setInterval(() => {
 
 @media (max-width: 768px) {
   .banner-section {
-    margin: 12px 12px 16px;
+    margin: 12px 12px 8px;
     height: 100px;
   }
 
   .custom-indicators {
-    bottom: 10px;
+    margin: 0 12px 16px;
     gap: 6px;
     padding: 5px 10px;
   }
