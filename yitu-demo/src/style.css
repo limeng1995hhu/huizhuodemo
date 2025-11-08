@@ -203,3 +203,29 @@ body > button,
 body > nav:not(.bottom-nav) {
   display: none !important;
 }
+
+/* 专门针对微信浏览器的导航按钮隐藏 */
+/* 微信浏览器会在页面底部添加前进后退按钮 */
+#wx_nav_bar,
+.wx_nav_bar,
+[class*="wx-nav"],
+[id*="wx-nav"],
+[class*="wechat-nav"],
+[id*="wechat-nav"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 隐藏微信浏览器底部工具栏 */
+body {
+  padding-bottom: env(safe-area-inset-bottom) !important;
+}
+
+/* 确保底部导航栏在最上层 */
+.bottom-nav {
+  z-index: 9999 !important;
+  position: fixed !important;
+  bottom: 0 !important;
+}

@@ -1,10 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>yitu-demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- 禁用微信浏览器的一些默认功能 -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="x5-page-mode" content="app" />
+    <meta name="browsermode" content="application" />
+
+    <title>弈途 - 万州围棋村超</title>
+
+    <style>
+      /* 内联样式优先级最高，用于隐藏微信浏览器导航 */
+      body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* 隐藏微信浏览器底部导航栏 */
+      #wx_nav_bar,
+      .wx_nav_bar,
+      [class*="wx-nav"],
+      [id*="wx-nav"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        opacity: 0 !important;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
