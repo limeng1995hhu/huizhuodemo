@@ -133,9 +133,6 @@ setInterval(() => {
           :class="{ active: index === currentBanner }"
           :style="{ backgroundImage: `url(${banner.image})` }"
         >
-          <div class="banner-content">
-            <h2>{{ banner.title }}</h2>
-          </div>
         </div>
       </div>
       <div class="custom-indicators">
@@ -306,23 +303,6 @@ setInterval(() => {
 .banner-slide.active {
   opacity: 1;
   z-index: 2;
-}
-
-.banner-content {
-  position: absolute;
-  top: 16px;
-  left: 20px;
-  right: 20px;
-  z-index: 3;
-}
-
-.banner-content h2 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0;
-  color: #1d1d1f;
-  letter-spacing: -0.5px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 
 /* 自定义圆点指示器 - Apple风格 */
@@ -797,16 +777,6 @@ setInterval(() => {
   .banner-section {
     margin: 12px 12px 16px;
     height: 100px;
-  }
-
-  .banner-content h2 {
-    font-size: 17px;
-  }
-
-  .banner-content {
-    top: 12px;
-    left: 16px;
-    right: 16px;
   }
 
   .custom-indicators {

@@ -1,5 +1,135 @@
-# Vue 3 + Vite
+# 弈途 (Yitu) - 围棋文化平台演示
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+基于 Vue 3 + Vite + Element Plus 构建的围棋文化平台演示项目。
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## ✨ 特性
+
+- 🎨 **Apple 设计风格**：采用 Apple 设计规范，简洁优雅
+- 📱 **响应式设计**：完美适配桌面和移动设备
+- 🎭 **流畅动画**：使用 Apple 标准动画曲线
+- 🌫️ **毛玻璃效果**：现代化的视觉效果
+- 🎯 **功能完整**：轮播图、功能卡片、新闻列表、赞助商展示
+
+## 🚀 快速开始
+
+### 安装依赖
+
+```bash
+npm install
+```
+
+### 开发模式
+
+```bash
+npm run dev
+```
+
+### 构建生产版本
+
+```bash
+npm run build
+```
+
+### 预览生产构建
+
+```bash
+npm run preview
+```
+
+## 📦 GitHub Pages 部署
+
+### 方法一：使用初始化脚本（推荐）
+
+```bash
+./init-github.sh
+```
+
+按照提示输入您的 GitHub 用户名和仓库名，脚本会自动配置并推送代码。
+
+### 方法二：手动配置
+
+1. **修改 `vite.config.js`**
+
+   将 `base` 路径改为您的仓库名：
+   ```javascript
+   base: process.env.NODE_ENV === 'production' ? '/你的仓库名/' : '/',
+   ```
+
+2. **推送代码到 GitHub**
+
+   ```bash
+   git add .
+   git commit -m "配置 GitHub Pages"
+   git push origin main
+   ```
+
+3. **配置 GitHub Pages**
+
+   - 进入仓库的 Settings → Pages
+   - Source 选择 `GitHub Actions`
+
+4. **等待部署完成**
+
+   访问 `https://你的用户名.github.io/仓库名/`
+
+### 快速部署脚本
+
+配置完成后，使用快速部署脚本：
+
+```bash
+./deploy.sh
+```
+
+## 📖 详细文档
+
+查看 [DEPLOY.md](./DEPLOY.md) 了解完整的部署指南和常见问题解决方案。
+
+## 🛠️ 技术栈
+
+- **框架**: Vue 3 (Composition API)
+- **构建工具**: Vite
+- **UI 组件**: Element Plus
+- **路由**: Vue Router 4
+- **图标**: Element Plus Icons
+- **样式**: CSS3 (Apple 设计规范)
+
+## 📁 项目结构
+
+```
+yitu-demo/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Actions 自动部署配置
+├── src/
+│   ├── assets/                 # 静态资源
+│   ├── components/             # 组件
+│   ├── router/                 # 路由配置
+│   ├── views/                  # 页面视图
+│   ├── App.vue                 # 根组件
+│   └── main.js                 # 入口文件
+├── public/                     # 公共资源
+├── deploy.sh                   # 快速部署脚本
+├── init-github.sh              # GitHub 初始化脚本
+├── DEPLOY.md                   # 部署文档
+└── vite.config.js              # Vite 配置
+
+```
+
+## 🎨 设计特点
+
+### Apple 设计规范应用
+
+- **字体系统**: SF Pro 字重 (600)，负字间距
+- **颜色系统**: Apple 标准色 (#1d1d1f, #86868b)
+- **动画系统**: cubic-bezier(0.28, 0.11, 0.32, 1)
+- **阴影系统**: 轻柔的多层阴影
+- **圆角系统**: 16-20px 大圆角
+- **毛玻璃效果**: backdrop-filter blur
+
+## 📄 许可证
+
+MIT License
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
