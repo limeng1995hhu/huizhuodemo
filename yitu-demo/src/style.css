@@ -182,3 +182,24 @@ body {
     font-size: 20px;
   }
 }
+
+/* 隐藏所有可能的导航箭头按钮 */
+.el-carousel__arrow,
+.el-carousel__arrow--left,
+.el-carousel__arrow--right,
+button[class*="arrow"],
+button[class*="prev"],
+button[class*="next"],
+div[class*="arrow"],
+div[class*="navigation"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* 隐藏底部可能出现的导航控制 */
+body > div:last-child:not(#app),
+body > button,
+body > nav:not(.bottom-nav) {
+  display: none !important;
+}

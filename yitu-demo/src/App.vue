@@ -162,3 +162,32 @@ const goToProfile = () => {
   }
 }
 </style>
+
+<style>
+/* 隐藏可能的浏览器导航按钮 */
+body {
+  overflow-x: hidden;
+}
+
+/* 隐藏微信浏览器等移动端浏览器的前进后退按钮 */
+#app {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* 防止出现水平滚动条和导航按钮 */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* 隐藏可能的浏览器控制按钮 */
+button[aria-label*="前进"],
+button[aria-label*="后退"],
+button[aria-label*="Previous"],
+button[aria-label*="Next"] {
+  display: none !important;
+}
+</style>
